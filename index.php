@@ -1,5 +1,5 @@
 <?php
-
+// arreglo 100 nombres y apellidos
 $nombres = [
     'Oswaldo', 'Kalin', 'Carmen', 'Darío', 'Elisa', 'Fabián', 'Gloria', 'Hugo', 'Inés', 'Julio',
     'Karla', 'Lucas', 'Marta', 'Nicolás', 'Olga', 'Pablo', 'Quetzal', 'Raúl', 'Silvia', 'Tomás',
@@ -14,7 +14,7 @@ $apellidos = [
 
 $uri = $_SERVER['REQUEST_URI'];
 
-// Validamos si el usuario ingresó a la ruta /generar
+// condicion para generar los nombres
 if (strpos($uri, '/generar') !== false) {
     
     $resultados = [];
@@ -28,7 +28,7 @@ if (strpos($uri, '/generar') !== false) {
 
         $persona = "$n1 $n2 $a1 $a2";
 
-        // Usamos el string como llave para evitar que se repitan en el arreglo final
+// Se usa string como llave para evitar que se repitan al final
         $resultados[$persona] = $persona;
     }
 
