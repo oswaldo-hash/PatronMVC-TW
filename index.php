@@ -15,7 +15,7 @@ $apellidos = [
 $uri = $_SERVER['REQUEST_URI'];
 
 // condicion para generar los nombres
-if (strpos($uri, '/generar') !== false) {
+if (strpos($uri, '/nombres') !== false) {
     
     $resultados = [];
     $limiteMaximo = 1000;
@@ -38,5 +38,5 @@ if (strpos($uri, '/generar') !== false) {
     
 } else {
     echo "<h1>Sistema activo</h1>";
-    echo "<p>Agrega <b>/generar</b> a la URL para visualizar los datos.</p>";
+    echo "<p>Agrega <b>/nombres</b> a la URL para visualizar los datos.</p>";
 }
