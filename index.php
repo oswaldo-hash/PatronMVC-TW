@@ -1,17 +1,42 @@
 <?php
-$nombre = "oswaldo"; 
-$edad = 21;
-$estatura = 1.70;
-$peso = 52;
-$carrera = "Ingeniería en Sistemas";
-$experiencia = "Soporte Técnico";
-$interes = "Programacion";
-$equipo = "Chivas";
-$talento = "Cantante";
-$emprendimiento = "taqueria";
 
-echo 'Hola, soy ' . $nombre . '. Tengo ' . $edad . ' años, mido ' . $estatura . 'm y peso ' . $peso . 'kg' .
-     'Estudio ' . $carrera . ' y tengo experiencia en ' . $experiencia . '. ' .
-     'Me gusta el ' . $interes . ' y le voy a las ' . $equipo . '.'
-     'Además, soy ' . $talento . ' y estoy planeando mi ' . $emprendimiento . '.';
-?>
+$nombres = [
+    'Oswaldo', 'Kalin', 'Carmen', 'Darío', 'Elisa', 'Fabián', 'Gloria', 'Hugo', 'Inés', 'Julio',
+    'Karla', 'Lucas', 'Marta', 'Nicolás', 'Olga', 'Pablo', 'Quetzal', 'Raúl', 'Silvia', 'Tomás',
+    'Úrsula', 'Víctor', 'Wendy', 'Ximena', 'Yael', 'Zoe', 'Aldo', 'Bárbara', 'Camilo', 'Dora'
+];
+
+$apellidos = [
+    'Alonso', 'Blanco', 'Carmona', 'Domínguez', 'Esteban', 'Fernández', 'Gil', 'Hernández', 'Iglesias', 'Jiménez',
+    'Lozano', 'Molina', 'Núñez', 'Ortega', 'Pastor', 'Quintana', 'Ramos', 'Serrano', 'Torres', 'Vargas',
+    'Méndez', 'Cruz', 'Ortiz', 'Gómez', 'Silva', 'Reyes', 'Aguilar', 'Mendoza', 'Salinas', 'Paz'
+];
+
+$uri = $_SERVER['REQUEST_URI'];
+
+// Validamos si el usuario ingresó a la ruta /generar
+if (strpos($uri, '/generar') !== false) {
+    
+    $resultados = [];
+    $limiteMaximo = 1000;
+
+    while (count($resultados) < $limiteMaximo) {
+        $n1 = $nombres[array_rand($nombres)];
+        $n2 = $nombres[array_rand($nombres)];
+        $a1 = $apellidos[array_rand($apellidos)];
+        $a2 = $apellidos[array_rand($apellidos)];
+
+        $persona = "$n1 $n2 $a1 $a2";
+
+        // Usamos el string como llave para evitar que se repitan en el arreglo final
+        $resultados[$persona] = $persona;
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode(array_values($resultados), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    exit;
+    
+} else {
+    echo "<h1>Sistema activo</h1>";
+    echo "<p>Agrega <b>/generar</b> a la URL para visualizar los datos.</p>";
+}
