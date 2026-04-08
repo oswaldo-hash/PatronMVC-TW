@@ -1,5 +1,5 @@
 <?php
-// arreglo 100 nombres y apellidos
+// se crean 2 arreglos para 100 nombres y apellidos
 $nombres = [
     'Oswaldo', 'Kalin', 'Carmen', 'Darío', 'Elisa', 'Fabián', 'Gloria', 'Hugo', 'Inés', 'Julio',
     'Karla', 'Lucas', 'Marta', 'Nicolás', 'Olga', 'Pablo', 'Quetzal', 'Raúl', 'Silvia', 'Tomás',
